@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildergalerie</title>
+</head>
+<!--hir befidet sich der webseiten Style-->
+    <style type="text/css">
+    </style>
+
+<!--hir befidet sich der JavaSript code-->
+    <script type="text/jS">
+   
+        function deleteImage(imageId) {
+
+            if (confirm("Möchten Sie dieses Bild wirklich löschen?")) {
+                // AJAX-Anfrage zum Löschen des Bildes senden
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "delete.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                
+                xhr.onreadystatechange = function() {
+
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Bild aus der Galerie entfernen
+                        var imageElement = document.getElementById(imageId);
+                        imageElement.parentNode.removeChild(imageElement);
+                    }
+                };
+                xhr.send("imageId=" + imageId);
+            }
+        }
+   
+        
+}
+    </script>
+
+
+
+    <header>
+    
+    
+    </header>
+
+    <nav>
+
+    </nav>
+
+
+</html>
+
